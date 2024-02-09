@@ -28,6 +28,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+fun hack(){
+    
+}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
