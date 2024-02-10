@@ -8,11 +8,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.hacklaton.ui.theme.HacklatonTheme
 
 class MainActivity : ComponentActivity() {
+    private var currentScreen by mutableStateOf<Screen>(Screen.StartupScreen)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -22,15 +27,18 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    when(currentScreen){
+                        Screen.StartupScreen -> StartupScreen()
+                        Screen.ArticleScreen -> ArticleScreen()
+                        Screen.Comments -> CommentScreen()
+                    }
                 }
             }
         }
     }
+
 }
-fun hack(){
-    
-}
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
